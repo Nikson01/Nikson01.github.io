@@ -1,27 +1,20 @@
-$orange: #ff8b37;
-$base-color: #c6538c;
+@import "./variables.scss";
 
 body {
   margin: 0;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-style: normal;
-  color: red;
   box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 h1 {
-  color: #1c1c21;
+  color: $black;
   margin: 0 0 60px 0;
   font-size: 56px;
 }
 
 h2 {
-  color: #1c1c21;
+  color: $black;
   font-size: 32px;
 }
 
@@ -35,10 +28,13 @@ h2 {
   border: none;
   border-radius: 12px;
   width: 100%;
-  background: #ff8b37;
-  color: #FFFFFF;
+  background: $orange;
+  color: white;
   font-size: 20px;
-  cursor: pointer;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .main-block {
@@ -50,24 +46,24 @@ h2 {
   background-color: white;
   max-width: 300px;
   width: 100%;
-  border: 1px solid #d0d0d8;
+  border: 1px solid $light-grey;
   border-radius: 8px;
   position: relative;
   margin: 0 46px 20px 46px;
   box-sizing: border-box;
 
   &__letter {
-    color: #ff8b37;
+    color: $orange;
     margin-right: 10px;
   }
 
   &__answer {
-    color: #1c1c21;
+    color: $black;
   }
 
   &:before {
     content: "";
-    background-color: #d0d0d8;
+    background-color: $light-grey;
     height: 1px;
     width: 17px;
     position: absolute;
@@ -80,7 +76,7 @@ h2 {
     height: 0;
     border-top: 35px solid transparent;
     border-bottom: 35px solid transparent;
-    border-right: 35px solid #d0d0d8;
+    border-right: 35px solid $light-grey;
     position: absolute;
     transition: all 0.3s ease;
 
@@ -102,7 +98,7 @@ h2 {
 
     &-right {
       right: -31px;
-      border-left: 35px solid #d0d0d8;
+      border-left: 35px solid $light-grey;
       border-right: none;
       transition: all 0.3s ease;
 
@@ -117,7 +113,7 @@ h2 {
 
   &:after {
     content: "";
-    background-color: #d0d0d8;
+    background-color: $light-grey;
     height: 1px;
     width: 17px;
     position: absolute;
@@ -128,50 +124,50 @@ h2 {
   &__not-selected {
     &:hover {
       cursor: pointer;
-      border-color: #ff8b37;
+      border-color: $orange;
       transition: all 0.3s ease;
 
       &:before {
-        background-color: #ff8b37;
+        background-color: $orange;
         transition: background-color 0.3s ease;
       }
 
       .triangle {
         &-left {
-          border-right-color: #ff8b37;
+          border-right-color: $orange;
           transition: all 0.3s ease;
         }
 
         &-right {
-          border-left-color: #ff8b37;
+          border-left-color: $orange;
           transition: all 0.3s ease;
         }
       }
 
       &:after {
-        background-color: #ff8b37;
+        background-color: $orange;
         transition: background-color 0.3s ease;
       }
     }
   }
 
   &__selected {
-    border-color: #ff8b37;
-    background-color: #fff3eb;
+    border-color: $orange;
+    background-color: $grey;
     animation: blink-animation 1s steps(5, start) infinite;
     -webkit-animation: blink-animation 1s steps(5, start) infinite;
 
     &:before {
-      background-color: #ff8b37;
+      background-color: $orange;
       transition: background-color 0.3s ease;
     }
 
     .triangle {
       &-left {
-        border-right-color: #ff8b37;
+        border-right-color: $orange;
 
         &:after {
-          border-right-color: #fff3eb;
+          border-right-color: $grey;
           animation: blink-animation-triangle-left 1s steps(5, start) infinite;
           -webkit-animation: blink-animation-triangle-left 1s steps(5, start)
             infinite;
@@ -179,10 +175,10 @@ h2 {
       }
 
       &-right {
-        border-left-color: #ff8b37;
+        border-left-color: $orange;
 
         &:after {
-          border-left-color: #fff3eb;
+          border-left-color: $grey;
           animation: blink-animation-triangle-right 1s steps(5, start) infinite;
           -webkit-animation: blink-animation-triangle-right 1s steps(5, start)
             infinite;
@@ -191,69 +187,69 @@ h2 {
     }
 
     &:after {
-      background-color: #ff8b37;
+      background-color: $orange;
     }
   }
 
   &__wrong {
-    border-color: #ec6259;
-    background-color: #fdeeed;
+    border-color: $hover-orange;
+    background-color: $grey-btn;
 
     &:before {
-      background-color: #ec6259;
+      background-color: $hover-orange;
     }
 
     .triangle {
       &-left {
-        border-right-color: #ec6259;
+        border-right-color: $hover-orange;
 
         &:after {
-          border-right-color: #fdeeed;
+          border-right-color: $grey-btn;
         }
       }
 
       &-right {
-        border-left-color: #ec6259;
+        border-left-color: $hover-orange;
 
         &:after {
-          border-left-color: #fdeeed;
+          border-left-color: $grey-btn;
         }
       }
     }
 
     &:after {
-      background-color: #ec6259;
+      background-color: $hover-orange;
     }
   }
 
   &__correct {
-    border-color: #47d867;
-    background-color: #e6faea;
+    border-color: $green;
+    background-color: $correct-grey;
 
     &:before {
-      background-color: #47d867;
+      background-color: $green;
     }
 
     .triangle {
       &-left {
-        border-right-color: #47d867;
+        border-right-color: $green;
 
         &:after {
-          border-right-color: #e6faea;
+          border-right-color: $correct-grey;
         }
       }
 
       &-right {
-        border-left-color: #47d867;
+        border-left-color: $green;
 
         &:after {
-          border-left-color: #e6faea;
+          border-left-color: $correct-grey;
         }
       }
     }
 
     &:after {
-      background-color: #47d867;
+      background-color: $green;
     }
   }
 
@@ -275,7 +271,7 @@ h2 {
       height: 0;
       border-top: 20px solid transparent;
       border-bottom: 20px solid transparent;
-      border-right: 20px solid #d0d0d8;
+      border-right: 20px solid $light-grey;
 
       &:after {
         border-top: 19px solid transparent;
@@ -291,7 +287,7 @@ h2 {
 
       &-right {
         right: -16px;
-        border-left: 20px solid #d0d0d8;
+        border-left: 20px solid $light-grey;
         border-right: none;
 
         &::after {
@@ -312,35 +308,78 @@ h2 {
 
     &__past {
       .main-block__answer {
-        color: #d0d0d8;
+        color: $light-grey;
       }
     }
 
     &__active {
-      border-color: #ff8b37;
+      border-color: $orange;
 
       .main-block__answer {
-        color: #ff8b37;
+        color: $orange;
       }
 
       &:before {
-        background-color: #ff8b37;
+        background-color: $orange;
       }
 
       .triangle {
         &-left {
-          border-right-color: #ff8b37;
+          border-right-color: $orange;
         }
 
         &-right {
-          border-left-color: #ff8b37;
+          border-left-color: $orange;
         }
       }
 
       &:after {
-        background-color: #ff8b37;
+        background-color: $orange;
       }
     }
+  }
+}
+
+.burger{
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+
+  &:before{
+    content: "";
+    height: 2px;
+    width: 20px;
+    border-radius: 1px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0px;
+  }
+
+  &-span{
+    height: 2px;
+    width: 20px;
+    border-radius: 1px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 9px;
+  }
+
+  &:after{
+    content: "";
+    height: 2px;
+    width: 20px;
+    border-radius: 1px;
+    background-color: black;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
   }
 }
 
