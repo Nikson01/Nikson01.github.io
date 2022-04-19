@@ -381,6 +381,23 @@ h2 {
     right: 0;
     bottom: 0px;
   }
+
+  &__open{
+
+    &:before{
+      transform: rotate(45deg);
+      top: 12px;
+    }
+
+    .burger-span{
+      display: none;
+    }
+
+    &:after{
+      transform: rotate(135deg);
+      bottom: 6px;
+    }
+  }
 }
 
 @keyframes blink-animation {

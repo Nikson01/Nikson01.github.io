@@ -1,8 +1,8 @@
 import React from 'react'
 
-function BurgerMob({toggleScore}) {
+function BurgerMob({toggleScore, toggledScore}) {
   return (
-    <div className='burger' onClick={() => toggleScore()}>
+    <div className={`burger ${toggledScore ? "burger__open" : ""}`} onClick={() => toggleScore()}>
         <span className='burger-span'></span>
     </div>
   )

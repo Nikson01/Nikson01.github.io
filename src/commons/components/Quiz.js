@@ -16,7 +16,6 @@ function Quiz() {
   };
 
   useEffect(() => {
-    console.log(size.width)
     if (size.width < 1024) {
       setIsMob(true)
     } else {
@@ -29,7 +28,7 @@ function Quiz() {
       <div className="flex_container quiz_container">
         {isMob ? !toggledScore && <LeftBlock /> : <LeftBlock />}
         {isMob ? toggledScore && <RightBlock /> : <RightBlock />}
-        {isMob && <BurgerMob toggleScore={toggleScore} />}
+        {isMob && <BurgerMob toggleScore={toggleScore} toggledScore={toggledScore} />}
       </div>
     </div>
   );
