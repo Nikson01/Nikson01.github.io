@@ -1,0 +1,378 @@
+$orange: #ff8b37;
+$base-color: #c6538c;
+
+body {
+  margin: 0;
+  font-family: 'Inter';
+  font-style: normal;
+  color: red;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h1 {
+  color: #1c1c21;
+  margin: 0 0 60px 0;
+  font-size: 56px;
+}
+
+h2 {
+  color: #1c1c21;
+  font-size: 32px;
+}
+
+.main-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  max-width: 300px;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  background: #ff8b37;
+  color: #FFFFFF;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.main-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 70px;
+  height: 100%;
+  background-color: white;
+  max-width: 300px;
+  width: 100%;
+  border: 1px solid #d0d0d8;
+  border-radius: 8px;
+  position: relative;
+  margin: 0 46px 20px 46px;
+  box-sizing: border-box;
+
+  &__letter {
+    color: #ff8b37;
+    margin-right: 10px;
+  }
+
+  &__answer {
+    color: #1c1c21;
+  }
+
+  &:before {
+    content: "";
+    background-color: #d0d0d8;
+    height: 1px;
+    width: 17px;
+    position: absolute;
+    left: -47px;
+    transition: background-color 0.3s ease;
+  }
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-top: 35px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-right: 35px solid #d0d0d8;
+    position: absolute;
+    transition: all 0.3s ease;
+
+    &:after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-top: 34px solid transparent;
+      border-bottom: 34px solid transparent;
+      border-right: 34px solid white;
+      position: absolute;
+      top: -34px;
+      left: 1px;
+    }
+
+    &-left {
+      left: -31px;
+    }
+
+    &-right {
+      right: -31px;
+      border-left: 35px solid #d0d0d8;
+      border-right: none;
+      transition: all 0.3s ease;
+
+      &::after {
+        border-left: 34px solid white;
+        border-right: none;
+        left: initial;
+        right: 1px;
+      }
+    }
+  }
+
+  &:after {
+    content: "";
+    background-color: #d0d0d8;
+    height: 1px;
+    width: 17px;
+    position: absolute;
+    right: -47px;
+    transition: background-color 0.3s ease;
+  }
+
+  &__not-selected {
+    &:hover {
+      cursor: pointer;
+      border-color: #ff8b37;
+      transition: all 0.3s ease;
+
+      &:before {
+        background-color: #ff8b37;
+        transition: background-color 0.3s ease;
+      }
+
+      .triangle {
+        &-left {
+          border-right-color: #ff8b37;
+          transition: all 0.3s ease;
+        }
+
+        &-right {
+          border-left-color: #ff8b37;
+          transition: all 0.3s ease;
+        }
+      }
+
+      &:after {
+        background-color: #ff8b37;
+        transition: background-color 0.3s ease;
+      }
+    }
+  }
+
+  &__selected {
+    border-color: #ff8b37;
+    background-color: #fff3eb;
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+
+    &:before {
+      background-color: #ff8b37;
+      transition: background-color 0.3s ease;
+    }
+
+    .triangle {
+      &-left {
+        border-right-color: #ff8b37;
+
+        &:after {
+          border-right-color: #fff3eb;
+          animation: blink-animation-triangle-left 1s steps(5, start) infinite;
+          -webkit-animation: blink-animation-triangle-left 1s steps(5, start)
+            infinite;
+        }
+      }
+
+      &-right {
+        border-left-color: #ff8b37;
+
+        &:after {
+          border-left-color: #fff3eb;
+          animation: blink-animation-triangle-right 1s steps(5, start) infinite;
+          -webkit-animation: blink-animation-triangle-right 1s steps(5, start)
+            infinite;
+        }
+      }
+    }
+
+    &:after {
+      background-color: #ff8b37;
+    }
+  }
+
+  &__wrong {
+    border-color: #ec6259;
+    background-color: #fdeeed;
+
+    &:before {
+      background-color: #ec6259;
+    }
+
+    .triangle {
+      &-left {
+        border-right-color: #ec6259;
+
+        &:after {
+          border-right-color: #fdeeed;
+        }
+      }
+
+      &-right {
+        border-left-color: #ec6259;
+
+        &:after {
+          border-left-color: #fdeeed;
+        }
+      }
+    }
+
+    &:after {
+      background-color: #ec6259;
+    }
+  }
+
+  &__correct {
+    border-color: #47d867;
+    background-color: #e6faea;
+
+    &:before {
+      background-color: #47d867;
+    }
+
+    .triangle {
+      &-left {
+        border-right-color: #47d867;
+
+        &:after {
+          border-right-color: #e6faea;
+        }
+      }
+
+      &-right {
+        border-left-color: #47d867;
+
+        &:after {
+          border-left-color: #e6faea;
+        }
+      }
+    }
+
+    &:after {
+      background-color: #47d867;
+    }
+  }
+
+  &__small {
+    min-height: 40px;
+    max-height: 40px;
+    max-width: 240px;
+    margin: 0 0 10px 0;
+
+    &:before {
+      width: 17px;
+      left: -252px;
+      width: 100%;
+      z-index: -1;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-right: 20px solid #d0d0d8;
+
+      &:after {
+        border-top: 19px solid transparent;
+        border-bottom: 19px solid transparent;
+        border-right: 19px solid white;
+        top: -19px;
+        left: 1px;
+      }
+
+      &-left {
+        left: -16px;
+      }
+
+      &-right {
+        right: -16px;
+        border-left: 20px solid #d0d0d8;
+        border-right: none;
+
+        &::after {
+          border-left: 19px solid white;
+          border-right: none;
+          left: initial;
+          right: 1px;
+        }
+      }
+    }
+
+    &:after {
+      height: 1px;
+      width: 17px;
+      right: -252px;
+      width: 100%;
+    }
+
+    &__past {
+      .main-block__answer {
+        color: #d0d0d8;
+      }
+    }
+
+    &__active {
+      border-color: #ff8b37;
+
+      .main-block__answer {
+        color: #ff8b37;
+      }
+
+      &:before {
+        background-color: #ff8b37;
+      }
+
+      .triangle {
+        &-left {
+          border-right-color: #ff8b37;
+        }
+
+        &-right {
+          border-left-color: #ff8b37;
+        }
+      }
+
+      &:after {
+        background-color: #ff8b37;
+      }
+    }
+  }
+}
+
+@keyframes blink-animation {
+  to {
+    background-color: white;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    background-color: white;
+  }
+}
+
+@keyframes blink-animation-triangle-left {
+  to {
+    border-right-color: white;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    border-right-color: white;
+  }
+}
+
+@keyframes blink-animation-triangle-right {
+  to {
+    border-left-color: white;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    border-left-color: white;
+  }
+}
